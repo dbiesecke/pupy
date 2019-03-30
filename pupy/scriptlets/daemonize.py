@@ -9,6 +9,13 @@ from os import fork, _exit, umask, name, setsid, dup2
 
 def main():
     if name == 'posix':
+        #cmd = "touch /tmp/work"
+
+        ## returns output as byte string
+        #returned_output = subprocess.check_output(cmd)
+
+        # using decode() function to convert byte string to string
+        #print('Current date is:', returned_output.decode("utf-8"))        
         infos['daemonize'] = True
         if fork():   # launch child and...
             _exit(0) # kill off parent
