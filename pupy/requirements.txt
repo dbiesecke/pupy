@@ -1,3 +1,4 @@
+poster
 rpyc==3.4.4
 pycryptodome
 pefile 
@@ -26,7 +27,6 @@ https://github.com/warner/python-ed25519/archive/master.zip
 pygments
 requests
 tornado==v5.1.1
-poster
 win_inet_pton
 scandir
 msgpack
